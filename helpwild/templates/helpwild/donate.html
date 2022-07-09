@@ -1,0 +1,264 @@
+<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Inter&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/static/helpwild/images/logo_help-wild_2.1.png">
+
+    <title>
+        Help:Wilds
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    {% load static %}
+    <link rel="stylesheet" href="/static/helpwild/css/donations.css" />
+    {% block stylesheets %}{% endblock stylesheets %}
+</head>
+{% block main %}
+<style type="text/css">
+    /**
+     * The CSS shown here will not be introduced in the Quickstart guide, but shows
+     * how you can use CSS to style your Element's container.
+     */
+    .StripeElement {
+        box-sizing: border-box;
+
+        height: 40px;
+
+        padding: 10px 12px;
+
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: white;
+
+        box-shadow: 0 1px 3px 0 #e6ebf1;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+    }
+
+    .StripeElement--focus {
+        box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+
+    .StripeElement--invalid {
+        border-color: #fa755a;
+    }
+
+    .StripeElement--webkit-autofill {
+        background-color: #fefde5 !important;
+    }
+</style>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<div id="container">
+    <div class="column-6">
+        <div id="left-wrapper">
+            <img id="profile-pic" src="/static/helpwild/images/logo_help-wild_2.1.png">
+            <div id="left-wrapper-header">
+                <h3>Buy Us a better life?</h3>
+                <h5>One Time Donation</h5>
+            </div>
+            <div style="clear:left"></div>
+            <hr>
+
+            <!-- Add form here -->
+            <form action="{% url 'helpwild:charge' %}" method="post" id="payment-form">
+                {% csrf_token %}
+                <!-- {{ form.as_p }}  -->
+                <div class="form-field-12">
+                    
+                     <label for="amount">Choose Amount:</label>
+                    <br>
+                    <br>
+                    <div required name="amount" id="amount">
+                        {{ form.value }} 
+                        <!-- <option selected value="25">25€ --- Here's food, on me :)</option>
+                        <option value="50">50€ --- You helped me, so I am thankful</option>
+                        <option value="100">100€ --- I love animals!</option>
+                        <option value="200">200€ --- I just want a better world!</option>
+                        <option value="350">350€ --- We need to do something, animals deserve it as much as we do!!!</option> -->
+                    </div>
+                </div>
+
+                <div class="form-field-6">
+                    {{ form.email }} 
+                    <!-- <input required type="text" name="email" placeholder="email..."> -->
+                </div>
+
+                <div class="form-field-6">
+                    {{ form.cardname }} 
+                    <!-- <input required type="text" name="cardname" placeholder="Card Name..."> -->
+                </div>
+
+                <div class="form-row">
+                    <label for="card-element">
+                        Credit or debit card
+                    </label>
+                    <div id="card-element">
+                       A Stripe Element will be inserted here. 
+                    </div>
+
+                    <!--Used to display form errors.-->
+                    <div id="card-errors" role="alert"></div>
+                </div>
+                <!-- {{form.as_p}} -->
+
+                <div style="clear:left"></div>
+                <hr>
+                <input class="myButton" style="background-color:#10a195" type="submit" value="Submit Payment" name="">
+            </form>
+
+
+        </div>
+    </div>
+
+    <div class="column-6">
+        <div style="padding-top: 0px;" id="right-wrapper">
+            <style>
+                progress {
+                    accent-color: #72cca7;
+                    width: 95%;
+                    height: 25px;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    
+                }
+            </style>
+
+            <ul class="responsive-table" style="font-family: 'Inter', sans-serif; padding: 0px; margin-top: 0px;">
+                <li class="table-header">
+                    <div class="col col-1">Position Rank</div>
+                    <div class="col col-2">Name</div>
+                    <div class="col col-3">Donation Amount</div>
+                </li>
+                {%for best in best3%}
+                <li class="table-row">
+                    <div class="col col-1" data-label="Job Id">#{{ forloop.counter }}</div><!--count loop -->
+                    <div class="col col-2" data-label="Customer Name">
+                        {{best.cardname}}
+                        </div>
+                    <div class="col col-3" data-label="Amount">
+                        {{best.value}}€</div>
+                </li>
+                {%endfor%}
+            </ul>
+            <strong><p style="margin-top: 45px;">Progress Bar | Intended to collect : 5000€</p></strong>
+            <progress  id="progressbar" value="{{value}}" max="5000"></progress>
+
+            <h3 style="margin: 21.68px; margin-left: 0px;">Thank you for your value we are very grateful to support our cause ;)</h3>
+            <p>All information about the instituation and our animals it's on our website, click in the button bellow and see :) At no point should you feel obligated
+                to
+                donate but if you have the means consider that you can give to the animals that need some food or shelter and improve their lifes. Thank
+                you!
+            </p>
+            <hr>
+            <a href="{% url 'helpwild:home' %}" class="myButton">Back to Main Page</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../_nav/js/jquery.js"><\/script>')</script>
+<script>
+    // Create a Stripe client.
+    var stripe = Stripe('pk_test_51LH4PgAwFMTHlXsiiiZYjLPjTXpeZMf2gHapj1EJoekCrhZaSHBR1zSPkrKNxC6r7L8kFHzi7xO2SDBpi87G3TBG00fp9LcJ4Z');
+
+    // Create an instance of Elements.
+    var elements = stripe.elements();
+
+    // Custom styling can be passed to options when creating an Element.
+    // (Note that this demo uses a wider set of styles than the guide below.)
+    var style = {
+        base: {
+            color: '#32325d',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+        }
+    };
+
+    // Create an instance of the card Element.
+    var card = elements.create('card', { style: style });
+
+    // Add an instance of the card Element into the `card-element` <div>.
+    card.mount('#card-element');
+
+    // Handle real-time validation errors from the card Element.
+    card.addEventListener('change', function (event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+    // Handle form submission.
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        stripe.createToken(card).then(function (result) {
+            if (result.error) {
+                // Inform the user if there was an error.
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                // Send the token to your server.
+                stripeTokenHandler(result.token);
+            }
+        });
+    });
+
+    // Submit the form with the token ID.
+    function stripeTokenHandler(token) {
+        // Insert the token ID into the form so it gets submitted to the server
+        var form = document.getElementById('payment-form');
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', token.id);
+        form.appendChild(hiddenInput);
+
+        // Submit the form
+        form.submit();
+    }
+
+
+    //Progress Bar:
+    $(document).ready(function() {
+		if(!Modernizr.meter){
+			alert('Sorry your brower does not support HTML5 progress bar');
+		} else {
+			var progressbar = $('#progressbar'),
+				max = progressbar.attr('max'),
+				time = (1000/max)*5,
+		        value = progressbar.val();
+
+		    var loading = function() {
+		        value += 1;
+		        addValue = progressbar.val(value);
+
+		        $('.progress-value').html(value + '%');
+
+		        if (value == max) {
+		            clearInterval(animate);
+		        }
+		    };
+
+		    var animate = setInterval(function() {
+		        loading();
+		    }, time);
+		};
+	});
+</script>
+
+{% endblock %}

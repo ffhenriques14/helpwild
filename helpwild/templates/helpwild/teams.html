@@ -1,0 +1,259 @@
+{% extends 'helpwild/layout.html' %}
+{% block main %}
+
+
+<!-- Main -->
+
+<body class="left-sidebar is-preload">
+    <div id="page-wrapper">
+
+        <div class="wrapper style1">
+
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-4 col-12-mobile" id="sidebar">
+
+                        <section>
+                            <header>
+                                <h2><strong><a href="#">Help:wild team members:</a></strong></h2>
+                            </header>
+                            <p>
+                                On our team we just have people that love the wild.
+                            </p>
+                            <div class="row gtr-50">
+
+                                <div class="col-4">
+                                    <a href="#" class="image fit"><img src="/static/helpwild/images/cat_team.png" alt="" /></a>
+                                </div>
+                                <div class="col-8">
+                                    <h4>Natasha</h4>
+                                    <p>
+                                        Our chief zoologist .
+                                    </p>
+                                </div>
+                                <div class="col-4">
+                                    <a href="#" class="image fit"><img src="/static/helpwild/images/cat_team.png" alt="" /></a>
+                                </div>
+                                <div class="col-8">
+                                    <h4>Nadja</h4>
+                                    <p>
+                                        Our environmentalist
+                                    </p>
+                                </div>
+                                <div class="col-4">
+                                    <a href="#" class="image fit"><img src="/static/helpwild/images/cat_team.png" alt="" /></a>
+                                </div>
+                                <div class="col-8">
+                                    <h4>Mark</h4>
+                                    <p>
+                                        Our Marketing Director
+                                    </p>
+                                </div>
+                                <div class="col-4">
+                                    <a href="#" class="image fit"><img src="/static/helpwild/images/cat_team.png" alt="" /></a>
+                                </div>
+                                <div class="col-8">
+                                    <h4>Ibambué</h4>
+                                    <p>
+                                        our head Guardian/Ranger
+                                    </p>
+                                </div>
+                                <div class="col-4">
+                                    <a href="#" class="image fit"><img src="/static/helpwild/images/cat_team.png" alt="" /></a>
+                                </div>
+                                <div class="col-8">
+                                    <h4>J.Cutler</h4>
+                                    <p>
+                                        Our ambassador
+                                    </p>
+                                </div>
+                                <div id='items'></div>
+
+                                <div><a href="javascript:void(0)" class="button" onclick="loadData()">Load more</a>
+                                </div>
+
+                                <template id='template'>
+                                    <div class="col-4">
+                                        <a class="image fit" style="display: block;
+                                        width: 100%;"><img src="/static/helpwild/images/cat_team.png" alt=""></a>
+                                    </div>
+                                    <div class="col-8">
+                                        <h4>{{title}}</h4>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <footer>
+                                <a href="#" class="button">Board</a>
+                                <a href="#" class="button">Staff</a>
+                            </footer>
+                        </section>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <section>
+                            <header>
+                                <h4><strong><a href="{% url 'helpwild:timeline' %}">See what we've been up to over the
+                                            years</a></strong></h4>
+                            </header>
+                        </section>
+                    </div>
+                    <div class="col-8 col-12-mobile imp-mobile" id="content">
+                        <article id="main">
+                            <header>
+                                <h2><strong><a href="#">Team help:wild</a></strong></h2>
+                                <p>
+                                    Our help : wild team, on a forest in India, helping a tiger.
+                                </p>
+                            </header>
+                            <a class="image featured"><img src="/static/helpwild/images/team1.jpg" alt="" /></a>
+                            <h2><a href="#">Our team:</a></h2>
+                            <p>
+                                Teamwork makes the wild work. Working together is how we protect and nurture all life
+                                on Earth. Every creature, plant, and human—including you—plays a part in building a
+                                thriving planet. All things working together, for all wildkind.
+                            </p>
+                            <section>
+                                <header>
+                                    <h4>Akuna batata</h4>
+                                </header>
+                                <p>
+                                    "Re:wild offers a bold vision to amplify and scale the local solutions being led by
+                                    Indigenous peoples and local communities, nongovernmental organizations, companies,
+                                    and government agencies, to help increase their impact around the world," says
+                                    <a target="" href="/team/leonardo-dicaprio">Leonardo DiCaprio</a> ,
+                                    a founding board member of Re:wild. The environmental heroes that the planet needs
+                                    are
+                                    already here. Now we all must rise to the challenge and join them.”
+                                </p>
+                                <p>
+                                    Rewilding our world is a big task. Bigger than any one person, organization, or
+                                    government can accomplish alone. That’s why we’re glad you’re here! Team Re:wild is
+                                    a
+                                    dynamic, diverse, and driven team, leveraging our collective talents, passions, and
+                                    creativity to drive lasting change.
+                                </p>
+                                <p>No matter where you are on your journey, you’re on the team.&nbsp;</p>
+                                <p><b>We do not call people out. We call people in.&nbsp;</b></p>
+                            </section>
+                            <section>
+                                <header>
+                                    <h4>Akuna batata</h4>
+                                </header>
+                                <p>Here’s what’s next:</p>
+                                <p>
+                                    <a class="scrolly" href="#footer" style="color:rgb(66, 201, 112) ;">Be a member and
+                                        receive our Weekly Wild!</a>
+                                    We’ll send a short list to inspire you,
+                                    pointing you to simple actions you can take and upcoming events that support a
+                                    global push for a thriving planet.
+                                </p>
+                                <p>
+                                    Support the cause. We’ve worked with scientists to identify the areas and species
+                                    that, if
+                                    restored and protected, have the greatest benefit to the world at large.
+                                    <span style="color:rgb(66, 201, 112) ;">If you’re willing
+                                        and able, support this important work!</span>
+                                </p>
+                                <p>
+                                    Advocate for the Earth. Whether it is signing a petition or amplifying a story to
+                                    convince governments to protect irreplaceable places, you can be a part of the power
+                                    of collective action in rewilding our world.
+                                </p>
+                                <p>
+                                    And in return, we commit to building the platforms and the tools to promote
+                                    nature-based solutions. We commit to foster creative collaborations, among
+                                    individuals, communities, organizations, governments, and businesses towards a
+                                    shared vision.
+                                </p>
+                                <p>
+                                    The rest is up to all of us.
+                                </p>
+                                <p>
+                                    So <span style="color:rgb(66, 201, 112) ;">Act:Now</span> for Earth
+                                </p>
+                            </section>
+                        </article>
+                    </div>
+                </div>
+                <hr />
+                <h2><strong>Founders:</strong></h2>
+                <p></p>
+                <div class="row">
+                    <article class="col-4 col-12-mobile special">
+                        <a href="#" class="image featured"><img src="/static/helpwild/images/lindo.jfif" alt="" /></a>
+                        <header>
+                            <h3><strong><a href="#">Leonardo Di Caprio</a></strong></h3>
+                        </header>
+                    </article>
+                    <article class="col-4 col-12-mobile special">
+                        <a href="#" class="image featured"><img src="/static/helpwild/images/person1.jpg" alt="" /></a>
+                        <header>
+                            <h3><strong><a href="#">Nastya Nirkova</a></strong></h3>
+                        </header>
+                    </article>
+                    <article class="col-4 col-12-mobile special">
+                        <a href="#" class="image featured"><img src="/static/helpwild/images/person2.jpg" alt="" /></a>
+                        <header>
+                            <h3><strong><a href="#">José Almeida</a></strong></h3>
+                        </header>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock main %}
+
+<!--====== Javascripts & Jquery ======-->
+{% block javascripts %}
+<script src="/static/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/static/assets/js/bootstrap.min.js"></script>
+<script src="/static/assets/js/owl.carousel.min.js"></script>
+<script src="/static/assets/js/jquery.marquee.min.js"></script>
+<script src="/static/assets/js/main.js"></script>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+
+<script>
+
+    let dataset = [
+        {
+            title: 'Antonio',
+            id: 1
+        },
+        {
+            title: 'José',
+            id: 2
+        },
+        {
+            title: 'Maria',
+            id: 3
+        },
+        {
+            title: 'Galileu',
+            id: 4
+        }
+    ];
+
+    function loadData() {
+        let template = document.getElementById('template');
+        dataset.forEach(function (item) {
+            // create a new element with the contents of the template
+            let div = document.createElement('div');
+            div.className = 'item';
+            div.innerHTML = template.innerHTML.replace('{{title}}', item.title);
+
+            document.getElementById('items').appendChild(div);
+        });
+    }
+
+</script>
+
+{% endblock javascripts %}

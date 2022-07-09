@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/static/helpwild/images/logo_help-wild_2.1.png">
+
+    <title>
+        Help:Wild
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'helpwild/css/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'helpwild/css/style_map.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'helpwild/css/fontawesome-all.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'helpwild/css/noscript.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}{% endblock stylesheets %}
+    <script src="static/helpwild/js/jquery.min.js"></script>
+    <script src="static/helpwild/js/jquery.scrolly.min.js"></script>
+    <script src="static/helpwild/js/jquery.scrollex.min.js"></script>
+    <script src="static/helpwild/js/browser.min.js"></script>
+    <script src="static/helpwild/js/breakpoints.min.js"></script>
+    <script src="static/helpwild/js/util.js"></script>
+    <script src="static/helpwild/js/main.js"></script>
+    <script src="static/helpwild/js/map.js"></script>
+    <script src="https://cdn.rawgit.com/davidjbradshaw/image-map-resizer/master/js/imageMapResizer.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</head>
+
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+        <div id="header">
+            <!-- Inner -->
+            <div class="inner">
+                <header>
+                    <h1><a href="{% url 'helpwild:home' %}"><span class="typing">act:now</span></a></h1>
+                    <!--Mudar JS-->
+                    <hr />
+                    <h3>Help the world to be a better place</h3>
+                </header>
+                <footer>
+                    <a href="#banner" class="button circled scrolly">&#10507;</a>
+                    <!--https://www.toptal.com/designers/htmlarrows/arrows/-->
+                </footer>
+            </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+
+                <ul>
+                    <a href="{% url 'helpwild:home' %}"><img src="/static/helpwild/images/logo_help-wild_2.1.png"
+                            style="width: 150px; float: left; margin: 0px 6.55em 0 0.5em;"></a>
+
+                    <li><a href="{% url 'helpwild:teams' %}">
+                            <h3>About us</h3>
+                        </a></li>
+                    <li><a href="{% url 'helpwild:timeline' %}">
+                            <h3>Our Work</h3>
+                        </a></li>
+
+                    <li><a href="{% url 'helpwild:news' %}">
+                            <h3>News</h3>
+                        </a></li>
+
+                    <li><a href="">
+                            <h3>Statistics</h3>
+                        </a></li>
+
+                    <a href="{% url 'helpwild:donate' %}" class="donate">
+                        <h3>Donate &nbsp<i class="fas fa-donate"></i></h3>
+                    </a>
+                    {% if request.user.is_authenticated %}  
+                    <a href="{% url 'helpwild:logout' %}" class="donate">
+                        <h3>Logout &nbsp<i class="fa fa-sign-out-alt" aria-hidden="true"></i></h3>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'helpwild:login' %}" class="donate">
+                        <h3>Login &nbsp<i class="fa fa-user" aria-hidden="true"></i></h3>
+                    </a>
+                    {% endif %}
+
+                </ul>
+
+            </nav>
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+
+<body class="g-sidenav-show bg-white">
+    <main class="main-content mt-4 border-radius-lg">
+        {% block main %}
+        {% endblock main %}
+    </main>s
+    <!-- Specific JS goes HERE -->
+    {% block javascripts %}{% endblock javascripts %}
+
+</body>
+<form method="post" enctype="multipart/form-data" action="/check/">
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <!-- Emails -->
+                <section class="col-4 col-12-mobile">
+                    <header>
+                        <h2 class="fa fa-user-circle-o"><span class="label">News Letter</span></h2>
+                    </header>
+                    <ul class="divided">
+                        <li>
+                            <input type="text" placeholder="First Name" name="firstname" value=""
+                                style="text-align: center ; width: 450px; height: 50px;">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Last Name" name="lastname" value=""
+                                style="text-align: center ; width: 450px; height: 50px;">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Email" name="email" value=""
+                                style="text-align: center ;width: 450px; height: 50px;">
+                        </li>
+                        <article class="post stub">
+                            <footer>
+                                <a href="#" class="button">Apply</a>
+                            </footer>
+                        </article>
+                    </ul>
+                </section>
+
+                <!-- Posts -->
+                <section class="col-4 col-12-mobile">
+                    <header>
+                        <h2 class="icon solid fa-file circled"><span class="label">Posts</span></h2>
+                    </header>
+                    <ul class="divided">
+                        <li>
+                            <article class="post stub">
+                                <header>
+                                    <h3><a href="Volunteering.pdf" download>Volunteer in South Africa</a></h3>
+                                </header>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="post stub">
+                                <header>
+                                    <h3><a href="Volunteering.pdf" download>Volunteer in Brazil</a></h3>
+                                </header>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="post stub">
+                                <header>
+                                    <h3><a href="Volunteering.pdf" download>Volunteer in Australia</a></h3>
+                                </header>
+                            </article>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Photos -->
+                <section class="col-4 col-12-mobile">
+                    <header>
+                        <h2 class="icon solid fa-camera circled"><span class="label">Photos</span></h2>
+                    </header>
+                    <div class="row gtr-26">
+                        <div class="col-6">
+                            <a class="image fit"><img src="/static/images/animal_volunteering_1.jpg" alt=""
+                                    style="width: 181.66px; height: 154.28px;" /></a>
+                        </div>
+                        <div class="col-6">
+                            <a class="image fit"><img src="/static/images/animal_volunteering_2.jpg" alt=""
+                                    style="width: 181.66px; height: 154.28px;" /></a>
+                        </div>
+                        <div class="col-6">
+                            <a class="image fit"><img src="/static/images/animal_volunteering_3.jpg" alt=""
+                                    style="width: 181.66px; height: 154.28px;" /></a>
+                        </div>
+                        <div class="col-6">
+                            <a class="image fit"><img src="/static/images/animal_volunteering_4.jpg" alt=""
+                                    style="width: 181.66px; height: 154.28px;" /></a>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Contact -->
+                    <section class="contact">
+                        <header>
+                            <h3>I hope you liked my website</h3>
+                        </header>
+                        <p>Think more about the environment and all the living beings that surround
+                            it, help the world to be a better place for our future.</p>
+                        <ul class="icons">
+                            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Made by -->
+                    <div class="copyright">
+                        <ul class="menu">
+                            <li>&copy; Website made by Francisco Ferreira</li>
+                            <li>Inicial Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+</html>

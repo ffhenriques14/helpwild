@@ -1,0 +1,92 @@
+{% extends 'helpwild/layout.html' %}
+{% block main %}
+
+{% block style %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'helpwild/css/quiz.css' %}" />
+
+{% endblock style %}
+
+<style>
+
+</style>
+<!-- Main -->
+
+<body class="left-sidebar is-preload">
+    <div id="page-wrapper">
+
+        <div class="wrapper style1">
+
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-4 col-12-mobile" id="sidebar">
+
+                        <section>
+                            <header>
+                                <h2><strong>Quiz:</strong></h2>
+                            </header>
+                            <div class="row gtr-50">
+                                <div class="quiz">
+                                    <!-- <img id="profile-pic" src="/static/helpwild/images/logo_help-wild_2.1.png"> -->
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+
+                                        {{ form.as_p }}
+
+                                        <input type="submit" value="Gravar" class="btn">
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-8 col-12-mobile imp-mobile" id="content">
+                        <article id="main">
+                            <header>
+                                <h2><strong>Quiz best results:</strong></h2>
+                            </header>
+                            <div style="width: 1000px;" class="graficos">
+                                <p><img src="data:image/png;base64,{{ data }}" alt=""></p>
+                            </div>
+                            <div>
+                                <header>
+                                    <h2><strong>Comments:</strong></h2>
+                                </header>
+                                <header>
+                                    <h4><a class="btnNovaTarefa" href="{% url 'helpwild:newcomment' %}"
+                                            class="btn btn-success btn-block">+ New
+                                            Comment</a></h4>
+                                </header>
+                                <section>
+                                    {% for comments in comment %}
+                                    <div id="container-comments">
+                                        <p>{{comments.titulo}}</p>
+
+                                        <p>{{comments.descricao}}</p>
+
+                                        {% if comments.link %}
+                                        <p>Link: <a href="{{comments.link}}">{{comments.link}}</a></p>
+                                        {% endif %}
+                                        <span>By:{{comments.autor}} || Date: {{comments.data}}</span>
+
+                                        <br>
+                                        <a href="{% url 'helpwild:editcomment' comments.id %}"
+                                            class="btnEditar">Edit</a>
+                                        {% if user.is_authenticated %}
+                                        <a href="{% url 'helpwild:deletecomment' comments.id %}" role="button"
+                                            class="btnApagar">Delete</a>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </section>
+                            </div>
+                    </div>
+                    </article>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+    </div>
+</body>
+{% endblock main %}

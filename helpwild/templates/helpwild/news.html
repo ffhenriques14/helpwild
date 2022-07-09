@@ -1,0 +1,123 @@
+{% extends 'helpwild/layout.html' %}
+
+{% block main %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- Main -->
+
+<body class="right-sidebar is-preload">
+    <!-- Header -->
+
+    <!-- Main -->
+    <div class="wrapper style1">
+        <div class="card">
+            <!-- <div class="container"> -->
+                
+            <header>
+                <h2 style="text-align: center;"><strong>Animals World News</strong></h2>
+            </header>
+            <div class="band">
+                <div class="item-1">
+                    <a href="{{link.1}}"
+                        class="card">
+                        <img src="{{ img.1 }}">
+                        <article>
+                            <h1>{{news_header_big.1}}</h1>
+                            <p>{{news_body_big}}</p>
+                            <span>NBC NEWS</span>
+                        </article>
+                    </a>
+                </div>
+                <div class="item-2">
+                    <a href="https://webdesign.tutsplus.com/articles/how-to-conduct-remote-usability-testing--cms-27045"
+                        class="card">
+                        <img src="{{ img.21 }}" >
+                        <article>
+                            <h1>{{news_header.0}}</h1>
+                            <p>{{news_body.0}}</p>
+                            <span>NBC NEWS</span>
+                        </article>
+                    </a>
+                </div>
+                <div class="item-3">
+                    <a href="https://design.tutsplus.com/articles/envato-tuts-community-challenge-created-by-you-july-edition--cms-26724"
+                        class="card">
+                        <img src="{{ img.23 }}" >
+                        <article>
+                            <h1>{{news_header.1}}</h1>
+                            <p>{{news_body.1}} </p>
+                            <span>NBC NEWS</span>
+                        </article>
+                    </a>
+                </div>
+                <div class="item-4">
+                    <a href="https://webdesign.tutsplus.com/tutorials/how-to-code-a-scrolling-alien-lander-website--cms-26826"
+                        class="card">
+                        <img src="{{ img.25 }}" >
+                        <article>
+                            <h1>{{news_header.2}}</h1>
+                            <p>{{news_body.2}}
+                            </p>
+                            <span>NBC NEWS</span>
+                        </article>
+                    </a>
+                </div>
+                <div class="item-5">
+                    <a href="https://design.tutsplus.com/tutorials/stranger-things-inspired-text-effect--cms-27139"
+                        class="card">
+                        <img src="{{ img.27 }}" >
+                        <article>
+                            <h1>{{news_header.3}}</h1>
+                            <p>{{news_body.3}}.</p>
+                            <span>NBC NEWS</span>
+                        </article>
+                    </a>
+                </div>
+                <div class="item-6">
+                    <a href="https://photography.tutsplus.com/articles/5-inspirational-business-portraits-and-how-to-make-your-own--cms-27338"
+                        class="card">
+                        <img src="{{ img.29 }}" >
+                        <article>
+                            <h1>{{news_header.4}}</h1>
+                            <p>{{news_body.4}}</p>
+
+                            <span>NBC NEWS</span>
+                        </article>
+                    </a>
+                </div>
+                <div class="item-7">
+                    <a href="https://webdesign.tutsplus.com/articles/notes-from-behind-the-firewall-the-state-of-web-design-in-china--cms-22281"
+                        class="card">
+                        <img src="{{ img.31 }}" >
+                        <article>
+                            <h1>{{news_header.5}}
+                            </h1>
+                            <p>{{news_body.5}}</p>
+                            <span>NBC NEWS</span>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+
+
+
+{% endblock main %}
+
+<!--====== Javascripts & Jquery ======-->
+{% block javascripts %}
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+{% endblock javascripts %}

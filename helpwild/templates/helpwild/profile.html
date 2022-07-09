@@ -1,0 +1,238 @@
+{% block content %}
+<style>
+	.container {
+		max-width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	h2 small {
+		font-size: 0.5em;
+	}
+
+	.responsive-table li {
+		border-radius: 3px;
+		padding: 5px 30px;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 15px;
+	}
+
+	.responsive-table .table-header {
+		background-color: rgba(10, 190, 10, 0.575);
+		font-size: 14px;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+	}
+
+	.responsive-table .table-row {
+		background-color: #ffffff;
+		box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+	}
+
+	.responsive-table .col-1 {
+		flex-basis: 10%;
+	}
+
+	.responsive-table .col-2 {
+		flex-basis: 40%;
+	}
+
+	.responsive-table .col-3 {
+		flex-basis: 25%;
+	}
+
+	.responsive-table .col-4 {
+		flex-basis: 25%;
+	}
+
+	@media all and (max-width: 767px) {
+		.responsive-table .table-header {
+			display: none;
+		}
+
+		.responsive-table li {
+			display: block;
+		}
+
+		.responsive-table .col {
+			flex-basis: 100%;
+		}
+
+		.responsive-table .col {
+			display: flex;
+			padding: 10px 0;
+		}
+
+		.responsive-table .col:before {
+			color: #6c7a89;
+			padding-right: 10px;
+			content: attr(data-label);
+			flex-basis: 50%;
+			text-align: right;
+		}
+	}
+</style>
+
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="/static/helpwild/images/logo_help-wild_2.1.png">
+
+	<title>
+		Help:Wild
+	</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'helpwild/css/main2.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'helpwild/css/fontawesome-all.min.css' %}" />
+	<link rel="stylesheet" href="/static/helpwild/css/donations.css" />
+
+
+	<!-- Specific CSS goes HERE -->
+	{% block stylesheets %}{% endblock stylesheets %}
+	<script src="static/helpwild/js/jquery.min.js"></script>
+	<script src="static/helpwild/js/jquery.scrolly.min.js"></script>
+	<script src="static/helpwild/js/jquery.scrollex.min.js"></script>
+	<script src="static/helpwild/js/browser.min.js"></script>
+	<script src="static/helpwild/js/breakpoints.min.js"></script>
+	<script src="static/helpwild/js/util.js"></script>
+	<script src="static/helpwild/js/main.js"></script>
+	<script src="static/helpwild/js/map.js"></script>
+	<script src="https://cdn.rawgit.com/davidjbradshaw/image-map-resizer/master/js/imageMapResizer.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+</head>
+
+<!-- Nav -->
+<nav id="nav">
+
+	<ul>
+		<a href="{% url 'helpwild:home' %}"><img src="/static/helpwild/images/logo_help-wild_2.1.png"
+				style="width: 150px; float: left; margin: 0px 6.55em 0 0.5em;"></a>
+
+		<li><a href="{% url 'helpwild:teams' %}">
+				<h3>About us</h3>
+			</a></li>
+		<li><a href="{% url 'helpwild:timeline' %}">
+				<h3>Our Work</h3>
+			</a></li>
+
+		<li><a href="{% url 'helpwild:news' %}">
+				<h3>News</h3>
+			</a></li>
+
+		<li><a href="">
+				<h3>Statistics</h3>
+			</a></li>
+
+		<a href="{% url 'helpwild:donate' %}" class="donate">
+			<h3>Donate &nbsp<i class="fas fa-donate"></i></h3>
+		</a>
+		{% if request.user.is_authenticated %}
+		<a href="{% url 'helpwild:logout' %}" class="donate">
+			<h3>Logout &nbsp<i class="fa fa-sign-out-alt" aria-hidden="true"></i></h3>
+		</a>
+		{% else %}
+		<a href="{% url 'helpwild:login' %}" class="donate">
+			<h3>Login &nbsp<i class="fa fa-user" aria-hidden="true"></i></h3>
+		</a>
+		{% endif %}
+
+	</ul>
+
+</nav>
+
+<body class="right-sidebar is-preload">
+	<!-- Header -->
+
+	<!-- Main -->
+	<div class="wrapper style1">
+		<div class="card">
+			<!-- <div class="container"> -->
+			<div id="container">
+				<form action="{% url 'helpwild:charge' %}" method="post" id="payment-form"></form>
+					<div class="column-6">
+
+						{% csrf_token %}
+						<!-- {{ form.as_p }}  -->
+						<div style="background-color: rgb(243, 235, 235);" id="left-wrapper">
+							<img id="profile-pic"
+								src="https://icon-library.com/images/user-profile-icon/user-profile-icon-23.jpg">
+							<div id="left-wrapper-header">
+								<h3>User Profile</h3>
+								<h5></h5>
+
+								{% for customers in customer %}
+								User Name:<p>{{customers.name}}</p>
+								<!--count loop -->
+								Email:<p>{{customers.email}}</p>
+
+								{%endfor%}
+							</div>
+							<div style="clear:left"></div>
+
+
+							<!-- Add form here -->
+
+							<div class="form-field-12">
+
+							</div>
+
+
+							<div style="clear:left"></div>
+
+							<a href="{% url 'helpwild:home' %}" class="myButton">Back to Main Page</a>
+
+
+
+						</div>
+					</div>
+
+					<div class="column-6">
+						<div style="padding-top: 0px;" id="right-wrapper">
+							<style>
+
+							</style>
+
+							<ul class="responsive-table"
+								style="font-family: 'Inter', sans-serif; padding: 0px; margin-top: 0px;">
+								<li style="text-align: center; background-color: rgb(243, 235, 235) ;" class="table-header">
+									<div style="text-align: center; background-color: rgb(243, 235, 235) ;"
+										class="col col-3">
+										Donations</div>
+								</li>
+								{% for customers in customer %}
+								<li class="table-row">
+									{%for donates in customers.donation.all%}
+									<div class="col col-3" data-label="Amount">
+										{{donates.value}}€</div>
+									{% endfor %}
+								</li>
+								{%endfor%}
+							</ul>
+							<hr>
+
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+	</div>
+</body>
+
+<!-- Main -->
+<div class="wrapper style1">
+
+
+</div>
+</body>
+
+
+
+
+{% endblock content %}
